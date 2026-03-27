@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn-primary {
+        @apply bg-green-600 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded transition;
+    }
+    .btn-secondary {
+        @apply bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium px-4 py-2 rounded transition border border-gray-300;
+    }
+    .btn-xs-green {
+        @apply bg-green-500 hover:bg-green-600 text-white text-xs px-2 py-1 rounded transition;
+    }
+    .btn-xs-blue {
+        @apply bg-blue-500 hover:bg-blue-600 text-white text-xs px-2 py-1 rounded transition;
+    }
+    .btn-xs-gray {
+        @apply bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs px-2 py-1 rounded transition;
+    }
+    .btn-xs-red {
+        @apply bg-red-500 hover:bg-red-600 text-white text-xs px-2 py-1 rounded transition;
+    }
+    .form-input {
+        @apply border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-green-400;
+    }
+    .filter-input {
+        @apply border border-gray-200 rounded px-1 py-0.5 text-xs font-normal normal-case tracking-normal w-full focus:outline-none focus:ring-1 focus:ring-green-400;
+    }
+    .agrolog-table th {
+        @apply text-left;
+    }
+}
+
+/* Print stilovi */
+@media print {
+    .no-print { display: none !important; }
+    nav, header, footer { display: none !important; }
+    body { font-size: 11px; }
+    .agrolog-table { width: 100%; border-collapse: collapse; }
+    .agrolog-table th, .agrolog-table td { border: 1px solid #000 !important; padding: 3px 6px !important; }
+    .agrolog-table thead { background: #eee !important; -webkit-print-color-adjust: exact; }
+    .shadow, .rounded-lg { box-shadow: none !important; border-radius: 0 !important; }
+    .py-6 { padding: 0 !important; }
+    .max-w-7xl { max-width: 100% !important; }
+    .sm\:px-6, .lg\:px-8 { padding: 0 !important; }
+}
