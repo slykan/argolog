@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
 class SocialAuthController extends Controller
@@ -35,7 +36,7 @@ class SocialAuthController extends Controller
                     'google_id'           => $googleUser->getId(),
                     'avatar'              => $googleUser->getAvatar(),
                     'naziv_gospodarstva'  => '',
-                    'password'            => null,
+                    'password'            => bcrypt(Str::random(32)),
                 ]);
             }
         }
