@@ -31,7 +31,7 @@ new class extends Component
     #[Computed]
     public function kulture()
     {
-        return Kultura::where('user_id', auth()->id())
+        return Kultura::where('kulture.user_id', auth()->id())
             ->with('parcela')
             ->join('parcele', 'parcele.id', '=', 'kulture.parcela_id')
             ->orderBy('parcele.arkod_broj')
