@@ -24,9 +24,10 @@ new class extends Component
     #[Computed]
     public function parcele()
     {
+        // Sortiraj po datumu unosa, najnovija prva
         return Parcela::where('user_id', auth()->id())
             ->with(['kulture' => fn($q) => $q->orderByDesc('godina')->orderBy('naziv')])
-            ->orderBy('arkod_broj')
+            ->orderByDesc('created_at')
             ->get();
     }
 
@@ -46,16 +47,30 @@ new class extends Component
             'parcelaForm.povrsina_ha' => 'required|numeric|min:0.01',
         ]);
 
+        $parcela = null;
         if ($this->editParcelaId) {
             Parcela::where('id', $this->editParcelaId)->where('user_id', auth()->id())
                 ->update(['arkod_broj' => $this->parcelaForm['arkod_broj'], 'povrsina_ha' => $this->parcelaForm['povrsina_ha']]);
+            $parcela = Parcela::where('id', $this->editParcelaId)->first();
         } else {
-            Parcela::create(array_merge($this->parcelaForm, ['user_id' => auth()->id()]));
+            $parcela = Parcela::create(array_merge($this->parcelaForm, ['user_id' => auth()->id()]));
         }
 
         $this->showParcelaForm = false;
         $this->editParcelaId = null;
         $this->parcelaForm = ['arkod_broj' => '', 'povrsina_ha' => ''];
+
+        // Automatski otvori formu za unos kulture sa istom površinom kao parcela
+        if ($parcela) {
+            $this->kulturaParcelaId = $parcela->id;
+            $this->showKulturaForm = true;
+            $this->editKulturaId = null;
+            $this->kulturaForm = [
+                'naziv' => '',
+                'posadjena_povrsina_ha' => $parcela->povrsina_ha,
+                'godina' => date('Y'),
+            ];
+        }
     }
 
     public function editParcela(int $id): void
@@ -92,7 +107,7 @@ new class extends Component
         $this->showKulturaForm = true;
     }
 
-    public function saveKultura(): void
+    public function saveKultura($nova = false): void
     {
         $this->validate([
             'kulturaForm.naziv'                 => 'required|string|max:100',
@@ -128,8 +143,17 @@ new class extends Component
             Kultura::create($data);
         }
 
-        $this->showKulturaForm = false;
         $this->editKulturaId = null;
+        if ($nova) {
+            // Ostavlja formu otvorenom za unos sledeće kulture
+            $this->kulturaForm = [
+                'naziv' => '',
+                'posadjena_povrsina_ha' => '',
+                'godina' => date('Y'),
+            ];
+        } else {
+            $this->showKulturaForm = false;
+        }
     }
 
     public function deleteKultura(int $id): void

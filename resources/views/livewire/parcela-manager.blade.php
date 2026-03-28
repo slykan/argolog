@@ -54,7 +54,8 @@
                 @error('kulturaForm.godina')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
             </div>
             <div class="flex gap-2">
-                <button wire:click="saveKultura" class="btn-xs-green">Spremi</button>
+                <button wire:click="saveKultura(true)" class="btn-xs-green">Spremi i nova</button>
+                <button wire:click="saveKultura" class="btn-xs-blue">Završi</button>
                 <button wire:click="$set('showKulturaForm', false)" class="btn-xs-gray">Odustani</button>
             </div>
         </div>
