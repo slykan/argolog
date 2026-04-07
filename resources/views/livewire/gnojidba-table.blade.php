@@ -128,7 +128,7 @@
 
                 {{-- Postojeći redovi --}}
                 @forelse($this->gnojidbe as $row)
-                <tr class="border-b border-gray-200 hover:bg-gray-50 @if($editingId === $row->id) bg-blue-50 @endif">
+                <tr wire:key="gnojidba-{{ $row->id }}" class="border-b border-gray-200 hover:bg-gray-50 @if($editingId === $row->id) bg-blue-50 @endif">
                     @if($editingId === $row->id)
                         {{-- Edit mode --}}
                         <td class="px-2 py-2 border border-gray-200 text-center text-gray-400">*</td>

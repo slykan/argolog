@@ -161,7 +161,7 @@
                 @endif
 
                 @forelse($this->prskanja as $row)
-                <tr class="border-b border-gray-200 hover:bg-gray-50 @if($editingId === $row->id) bg-blue-50 @endif">
+                <tr wire:key="prskanje-{{ $row->id }}" class="border-b border-gray-200 hover:bg-gray-50 @if($editingId === $row->id) bg-blue-50 @endif">
                     @if($editingId === $row->id)
                         <td class="px-2 py-2 border border-gray-200 text-center text-gray-400">*</td>
                         @if(in_array('datum', $visibleColumns))
@@ -180,12 +180,9 @@
                         <td class="p-1 border border-gray-200"><input type="number" wire:model="editForm.tretirana_povrsina_ha" step="0.01" class="form-input w-full"></td>
                         @endif
                         @if(in_array('sredstvo', $visibleColumns))
-                        <td class="p-1 border border-gray-200"><input type="text" wire:model="editForm.trgovacki_naziv_sredstva" class="form-input w-full" list="trgovacki-nazivi"></td>
-                        <datalist id="trgovacki-nazivi">
-                            @foreach($this->trgovackiNazivi as $naziv)
-                                <option value="{{ $naziv }}">
-                            @endforeach
-                        </datalist>
+                        <td class="p-1 border border-gray-200">
+                            <input type="text" wire:model="editForm.trgovacki_naziv_sredstva" class="form-input w-full" list="trgovacki-nazivi">
+                        </td>
                         @endif
                         @if(in_array('kolicina', $visibleColumns))
                         <td class="p-1 border border-gray-200"><input type="number" wire:model="editForm.kolicina_sredstva_l_ha" step="0.001" class="form-input w-full"></td>
