@@ -251,7 +251,7 @@ class PrskanjeTable extends Component
         Prskanje::create([
             'user_id'                   => auth()->id(),
             'kultura_id'                => $row->kultura_id,
-            'datum_tretiranja'          => $row->datum_tretiranja,
+            'datum_tretiranja'          => now()->toDateString(),
             'tretirana_povrsina_ha'     => $row->tretirana_povrsina_ha,
             'trgovacki_naziv_sredstva'  => $row->trgovacki_naziv_sredstva,
             'kolicina_sredstva_l_ha'    => $row->kolicina_sredstva_l_ha,

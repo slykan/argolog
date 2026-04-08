@@ -200,7 +200,7 @@ class GnojidbaTable extends Component
         Gnojidba::create([
             'user_id'        => auth()->id(),
             'kultura_id'     => $row->kultura_id,
-            'datum'          => $row->datum,
+            'datum'          => now()->toDateString(),
             'tip_gnojiva'    => $row->tip_gnojiva,
             'kolicina_kg_ha' => $row->kolicina_kg_ha,
         ]);
