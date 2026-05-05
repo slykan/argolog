@@ -150,7 +150,7 @@
                     @endif
                     @if(in_array('tret_povrsina', $visibleColumns))
                     <td class="p-1 border border-gray-200">
-                        <input type="number" wire:model="form.tretirana_povrsina_ha" step="0.01" placeholder="1.60" class="form-input w-full">
+                        <input type="number" wire:key="tretirana-povrsina-{{ $form['kultura_id'] ?: 'none' }}" wire:model="form.tretirana_povrsina_ha" step="0.01" placeholder="1.60" class="form-input w-full">
                         @error('form.tretirana_povrsina_ha')<p class="text-red-500 text-xs">{{ $message }}</p>@enderror
                     </td>
                     @endif
