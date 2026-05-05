@@ -26,6 +26,24 @@ class PrskanjeTable extends Component
     public array $filters = ['datum' => '', 'arkod' => '', 'kultura' => '', 'sredstvo' => ''];
     public string $formKulturaSearch = '';
     public bool $showKulturaPicker = false;
+    protected array $validationAttributes = [
+        'form.kultura_id' => 'ARKOD parcela',
+        'form.datum_tretiranja' => 'datum tretiranja',
+        'form.tretirana_povrsina_ha' => 'tretirana povrsina',
+        'form.trgovacki_naziv_sredstva' => 'trgovacki naziv sredstva',
+        'form.kolicina_sredstva_l_ha' => 'kolicina sredstva L/ha',
+        'form.vrijeme_od' => 'vrijeme od',
+        'form.vrijeme_do' => 'vrijeme do',
+        'form.kolicina_vode_l_ha' => 'kolicina vode L/ha',
+        'editForm.kultura_id' => 'ARKOD parcela',
+        'editForm.datum_tretiranja' => 'datum tretiranja',
+        'editForm.tretirana_povrsina_ha' => 'tretirana povrsina',
+        'editForm.trgovacki_naziv_sredstva' => 'trgovacki naziv sredstva',
+        'editForm.kolicina_sredstva_l_ha' => 'kolicina sredstva L/ha',
+        'editForm.vrijeme_od' => 'vrijeme od',
+        'editForm.vrijeme_do' => 'vrijeme do',
+        'editForm.kolicina_vode_l_ha' => 'kolicina vode L/ha',
+    ];
 
     public function mount(): void
     {

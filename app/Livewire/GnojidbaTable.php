@@ -22,6 +22,16 @@ class GnojidbaTable extends Component
     public array $filters = ['arkod' => '', 'kultura' => '', 'datum' => '', 'gnojivo' => ''];
     public string $formKulturaSearch = '';
     public bool $showKulturaPicker = false;
+    protected array $validationAttributes = [
+        'form.kultura_id' => 'ARKOD parcela',
+        'form.datum' => 'datum',
+        'form.tip_gnojiva' => 'tip gnojiva',
+        'form.kolicina_kg_ha' => 'kolicina kg/ha',
+        'editForm.kultura_id' => 'ARKOD parcela',
+        'editForm.datum' => 'datum',
+        'editForm.tip_gnojiva' => 'tip gnojiva',
+        'editForm.kolicina_kg_ha' => 'kolicina kg/ha',
+    ];
 
     public function mount(): void
     {

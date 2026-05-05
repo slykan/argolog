@@ -123,7 +123,7 @@
                                 <div class="flex gap-1">
                                     <input type="text" wire:model.live.debounce.500ms="formKulturaSearch" placeholder="Traži po ARKOD-u ili kulturi..." class="form-input flex-1" autofocus>
                                     @if($formKulturaSearch)
-                                    <button wire:click="saveMultiple" class="btn-xs-green whitespace-nowrap">
+                                    <button type="button" wire:click="saveMultiple" class="btn-xs-green whitespace-nowrap">
                                         Dodaj sve ({{ $this->filteredKulture->count() }})
                                     </button>
                                     @endif
@@ -141,6 +141,11 @@
                         </div>
                         @error('form.kultura_id')<p class="text-red-500 text-xs">{{ $message }}</p>@enderror
                         @error('formKulturaSearch')<p class="text-red-500 text-xs">{{ $message }}</p>@enderror
+                        @if($errors->any())
+                            <div class="mt-1 rounded border border-red-200 bg-red-50 px-2 py-1 text-xs text-red-700">
+                                {{ $errors->first() }}
+                            </div>
+                        @endif
                     </td>
                     @endif
                     @if(in_array('tret_povrsina', $visibleColumns))
@@ -181,9 +186,9 @@
                     </td>
                     @endif
                     <td class="p-1 border border-gray-200 whitespace-nowrap">
-                        <button wire:click="saveNew" class="btn-xs-green">Spremi</button>
+                        <button type="button" wire:click="saveNew" wire:loading.attr="disabled" class="btn-xs-green">Spremi</button>
                         @if($formKulturaSearch)
-                        <button wire:click="saveMultiple" class="btn-xs-green" title="Dodaj sve filtrirane kulture kao zasebne zapise">
+                        <button type="button" wire:click="saveMultiple" wire:loading.attr="disabled" class="btn-xs-green" title="Dodaj sve filtrirane kulture kao zasebne zapise">
                             Dodaj sve ({{ $this->filteredKulture->count() }})
                         </button>
                         @endif
