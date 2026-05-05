@@ -88,16 +88,16 @@
                     @if(in_array('arkod', $visibleColumns) || in_array('povrsina', $visibleColumns) || in_array('kultura', $visibleColumns))
                     <td class="p-1 border border-gray-200" colspan="{{ count(array_intersect(['arkod','povrsina','kultura'], $visibleColumns)) }}">
                         <div class="space-y-1">
-                            <div class="flex gap-1">
-                                <div class="form-input w-full bg-white">
+                            <button type="button" wire:click="openKulturaPicker" class="form-input w-full bg-white flex items-center justify-between gap-2 text-left">
+                                <span>
                                     @if($this->selectedKultura)
                                         {{ $this->selectedKultura->arkod_broj }} — {{ $this->selectedKultura->naziv }} ({{ $this->selectedKultura->posadjena_povrsina_ha }} ha)
                                     @else
                                         <span class="text-gray-400">-- odaberi jednu --</span>
                                     @endif
-                                </div>
-                                <button type="button" wire:click="openKulturaPicker" class="btn-xs-gray shrink-0">Traži</button>
-                            </div>
+                                </span>
+                                <span class="text-xs text-gray-500 shrink-0">Traži</span>
+                            </button>
 
                             @if($showKulturaPicker)
                                 <div class="flex gap-1">

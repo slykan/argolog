@@ -24,6 +24,8 @@ class PrskanjeTable extends Component
     public array $visibleColumns = ['datum', 'arkod', 'kultura', 'vel_povrsina', 'tret_povrsina', 'sredstvo', 'kolicina', 'vrijeme', 'voda'];
     public string $search = '';
     public array $filters = ['datum' => '', 'arkod' => '', 'kultura' => '', 'sredstvo' => ''];
+    public string $formKulturaSearch = '';
+    public bool $showKulturaPicker = false;
 
     public function mount(): void
     {
@@ -38,6 +40,37 @@ class PrskanjeTable extends Component
             ->orderBy('kulture.naziv')
             ->select('kulture.*', 'parcele.arkod_broj', 'parcele.povrsina_ha')
             ->get();
+    }
+
+    public function getFilteredKultureProperty()
+    {
+        if (!$this->formKulturaSearch) {
+            return $this->kulture;
+        }
+        $search = strtolower($this->formKulturaSearch);
+        return $this->kulture->filter(fn($k) =>
+            str_contains(strtolower($k->arkod_broj), $search) ||
+            str_contains(strtolower($k->naziv), $search)
+        );
+    }
+
+    public function getKulturaOptionsProperty(): array
+    {
+        return $this->kulture->map(fn($k) => [
+            'id'      => $k->id,
+            'arkod'   => $k->arkod_broj,
+            'naziv'   => $k->naziv,
+            'povrsina' => $k->posadjena_povrsina_ha,
+        ])->values()->all();
+    }
+
+    public function getSelectedKulturaProperty()
+    {
+        if (!$this->form['kultura_id']) {
+            return null;
+        }
+
+        return $this->kulture->firstWhere('id', (int) $this->form['kultura_id']);
     }
 
     public function getPrskanjaProperty()
@@ -90,6 +123,8 @@ class PrskanjeTable extends Component
     public function addRow(): void
     {
         $this->showForm = true;
+        $this->showKulturaPicker = false;
+        $this->formKulturaSearch = '';
         $this->form = [
             'kultura_id'               => '',
             'datum_tretiranja'         => date('Y-m-d'),
@@ -100,6 +135,21 @@ class PrskanjeTable extends Component
             'vrijeme_do'               => '',
             'kolicina_vode_l_ha'       => '',
         ];
+    }
+
+    public function openKulturaPicker(): void
+    {
+        $this->showKulturaPicker = true;
+    }
+
+    public function selectKultura(int $id): void
+    {
+        $kultura = Kultura::where('user_id', auth()->id())->findOrFail($id);
+
+        $this->form['kultura_id'] = $kultura->id;
+        $this->form['tretirana_povrsina_ha'] = $kultura->posadjena_povrsina_ha;
+        $this->formKulturaSearch = '';
+        $this->showKulturaPicker = false;
     }
 
     public function saveNew(): void
@@ -115,9 +165,58 @@ class PrskanjeTable extends Component
             'form.kolicina_vode_l_ha'       => 'nullable|numeric|min:0',
         ]);
 
-        Prskanje::create(array_merge($this->form, ['user_id' => auth()->id()]));
+        $data = $this->form;
+        $data['tretirana_povrsina_ha'] = $data['tretirana_povrsina_ha'] !== '' ? $data['tretirana_povrsina_ha'] : null;
+        $data['kolicina_vode_l_ha'] = $data['kolicina_vode_l_ha'] !== '' ? $data['kolicina_vode_l_ha'] : null;
+        $data['vrijeme_od'] = $data['vrijeme_od'] !== '' ? $data['vrijeme_od'] : null;
+        $data['vrijeme_do'] = $data['vrijeme_do'] !== '' ? $data['vrijeme_do'] : null;
+        Prskanje::create(array_merge($data, ['user_id' => auth()->id()]));
 
         $this->showForm = false;
+        $this->showKulturaPicker = false;
+        $this->formKulturaSearch = '';
+        $this->form = [
+            'kultura_id' => '', 'datum_tretiranja' => date('Y-m-d'),
+            'tretirana_povrsina_ha' => '', 'trgovacki_naziv_sredstva' => '',
+            'kolicina_sredstva_l_ha' => '', 'vrijeme_od' => '',
+            'vrijeme_do' => '', 'kolicina_vode_l_ha' => '',
+        ];
+    }
+
+    public function saveMultiple(): void
+    {
+        $this->validate([
+            'form.datum_tretiranja'         => 'required|date',
+            'form.tretirana_povrsina_ha'    => 'nullable|numeric|min:0.01',
+            'form.trgovacki_naziv_sredstva' => 'nullable|string|max:200',
+            'form.kolicina_sredstva_l_ha'   => 'nullable|numeric|min:0.001',
+            'form.vrijeme_od'               => 'nullable|date_format:H:i',
+            'form.vrijeme_do'               => 'nullable|date_format:H:i',
+            'form.kolicina_vode_l_ha'       => 'nullable|numeric|min:0',
+        ]);
+
+        $kulture = $this->filteredKulture;
+
+        if ($kulture->isEmpty()) {
+            $this->addError('formKulturaSearch', 'Nema kultura koje odgovaraju pretrazi.');
+            return;
+        }
+
+        $nullableFields = ['tretirana_povrsina_ha', 'trgovacki_naziv_sredstva', 'kolicina_sredstva_l_ha', 'kolicina_vode_l_ha', 'vrijeme_od', 'vrijeme_do'];
+        $data = $this->form;
+        foreach ($nullableFields as $field) {
+            $data[$field] = blank($data[$field]) ? null : $data[$field];
+        }
+        $data['user_id'] = auth()->id();
+        unset($data['kultura_id']);
+
+        foreach ($kulture as $kultura) {
+            Prskanje::create(array_merge($data, ['kultura_id' => $kultura->id]));
+        }
+
+        $this->showForm = false;
+        $this->showKulturaPicker = false;
+        $this->formKulturaSearch = '';
         $this->form = [
             'kultura_id' => '', 'datum_tretiranja' => date('Y-m-d'),
             'tretirana_povrsina_ha' => '', 'trgovacki_naziv_sredstva' => '',
@@ -155,9 +254,14 @@ class PrskanjeTable extends Component
             'editForm.kolicina_vode_l_ha'       => 'nullable|numeric|min:0',
         ]);
 
+        $data = $this->editForm;
+        $data['tretirana_povrsina_ha'] = $data['tretirana_povrsina_ha'] !== '' ? $data['tretirana_povrsina_ha'] : null;
+        $data['kolicina_vode_l_ha'] = $data['kolicina_vode_l_ha'] !== '' ? $data['kolicina_vode_l_ha'] : null;
+        $data['vrijeme_od'] = $data['vrijeme_od'] !== '' ? $data['vrijeme_od'] : null;
+        $data['vrijeme_do'] = $data['vrijeme_do'] !== '' ? $data['vrijeme_do'] : null;
         Prskanje::where('id', $this->editingId)
             ->where('user_id', auth()->id())
-            ->update($this->editForm);
+            ->update($data);
 
         $this->editingId = null;
         $this->editForm = [];
@@ -167,6 +271,22 @@ class PrskanjeTable extends Component
     {
         $this->editingId = null;
         $this->editForm = [];
+    }
+
+    public function copyRow(int $id): void
+    {
+        $row = Prskanje::where('id', $id)->where('user_id', auth()->id())->firstOrFail();
+        Prskanje::create([
+            'user_id'                   => auth()->id(),
+            'kultura_id'                => $row->kultura_id,
+            'datum_tretiranja'          => now()->toDateString(),
+            'tretirana_povrsina_ha'     => $row->tretirana_povrsina_ha,
+            'trgovacki_naziv_sredstva'  => $row->trgovacki_naziv_sredstva,
+            'kolicina_sredstva_l_ha'    => $row->kolicina_sredstva_l_ha,
+            'vrijeme_od'                => $row->vrijeme_od,
+            'vrijeme_do'                => $row->vrijeme_do,
+            'kolicina_vode_l_ha'        => $row->kolicina_vode_l_ha,
+        ]);
     }
 
     public function deleteRow(int $id): void
