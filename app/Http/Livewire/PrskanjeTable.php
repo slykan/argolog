@@ -184,6 +184,20 @@ class PrskanjeTable extends Component
         $this->showKulturaPicker = false;
     }
 
+    public function updatedFormKulturaId($id): void
+    {
+        if (!$id) {
+            $this->form['tretirana_povrsina_ha'] = '';
+            return;
+        }
+
+        $kultura = $this->kulture->firstWhere('id', (int) $id);
+
+        if ($kultura) {
+            $this->form['tretirana_povrsina_ha'] = $kultura->posadjena_povrsina_ha;
+        }
+    }
+
     public function saveNew(): void
     {
         $this->validate([
