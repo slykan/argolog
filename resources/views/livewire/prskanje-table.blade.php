@@ -3,30 +3,6 @@
         <div class="mb-3 p-2 bg-green-100 text-green-800 rounded text-sm">{{ session('success') }}</div>
     @endif
 
-    {{-- Zaglavlje obrasca --}}
-    <table class="w-full border-collapse text-sm mb-4 form-header-table">
-        <tr>
-            <td colspan="2" class="border border-gray-400 text-center font-bold py-2 uppercase tracking-wide text-base">
-                Evidencija o upotrebi sredstava za zaštitu bilja
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" class="border border-gray-400 px-3 py-1 text-sm">
-                Ime i prezime korisnika, vlasnika bilja koja je provela tretiranje:
-                <strong>{{ auth()->user()->name }}</strong>
-                @if(auth()->user()->oib), OIB: <strong>{{ auth()->user()->oib }}</strong>@endif
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-gray-400 px-3 py-1 font-bold uppercase w-48">Naziv gospodarstva</td>
-            <td class="border border-gray-400 px-3 py-1">{{ auth()->user()->naziv_gospodarstva }}</td>
-        </tr>
-        <tr>
-            <td class="border border-gray-400 px-3 py-1 font-bold uppercase">MIPG</td>
-            <td class="border border-gray-400 px-3 py-1">{{ auth()->user()->mipg }}</td>
-        </tr>
-    </table>
-
     {{-- Akcije (samo ekran) --}}
     <div class="flex flex-wrap items-center justify-end gap-2 mb-4 no-print">
         <div class="flex gap-2">
@@ -51,6 +27,26 @@
     <div class="overflow-x-auto">
         <table class="w-full border-collapse text-sm agrolog-table">
             <thead>
+                <tr>
+                    <td colspan="20" class="border border-gray-400 text-center font-bold py-2 uppercase tracking-wide text-base">
+                        Evidencija o upotrebi sredstava za zaštitu bilja
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="20" class="border border-gray-400 px-3 py-1 text-sm">
+                        Ime i prezime korisnika, vlasnika bilja koja je provela tretiranje:
+                        <strong>{{ auth()->user()->name }}</strong>
+                        @if(auth()->user()->oib), OIB: <strong>{{ auth()->user()->oib }}</strong>@endif
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="border border-gray-400 px-3 py-1 font-bold uppercase">Naziv gospodarstva</td>
+                    <td colspan="17" class="border border-gray-400 px-3 py-1">{{ auth()->user()->naziv_gospodarstva }}</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="border border-gray-400 px-3 py-1 font-bold uppercase">MIPG</td>
+                    <td colspan="17" class="border border-gray-400 px-3 py-1">{{ auth()->user()->mipg }}</td>
+                </tr>
                 <tr class="bg-gray-100 text-gray-700 text-xs uppercase tracking-wide">
                     <th class="border border-gray-300 px-2 py-2 text-center w-8">Rb.</th>
                     @if(in_array('datum', $visibleColumns))
