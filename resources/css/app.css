@@ -45,7 +45,7 @@
     body { font-size: 11px; }
     .agrolog-table { width: 100%; border-collapse: collapse; }
     .agrolog-table th, .agrolog-table td { border: 1px solid #000 !important; padding: 3px 6px !important; }
-    .agrolog-table thead { background: #eee !important; -webkit-print-color-adjust: exact; }
+    .agrolog-table thead { display: table-header-group; background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .shadow, .rounded-lg { box-shadow: none !important; border-radius: 0 !important; }
     .py-6 { padding: 0 !important; }
     .max-w-7xl { max-width: 100% !important; }

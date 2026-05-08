@@ -203,7 +203,7 @@ class PrskanjeTable extends Component
         $this->validate([
             'form.kultura_id'               => 'required|integer',
             'form.datum_tretiranja'         => 'required|date',
-            'form.tretirana_povrsina_ha'    => 'nullable|numeric|min:0.01|max:999999.99',
+            'form.tretirana_povrsina_ha'    => 'nullable|numeric|min:0|max:999999.99',
             'form.trgovacki_naziv_sredstva' => 'required|string|max:200',
             'form.kolicina_sredstva_l_ha'   => 'required|numeric|min:0.001|max:99999.999',
             'form.vrijeme_od'               => 'nullable|date_format:H:i',
@@ -233,7 +233,7 @@ class PrskanjeTable extends Component
     {
         $this->validate([
             'form.datum_tretiranja'         => 'required|date',
-            'form.tretirana_povrsina_ha'    => 'nullable|numeric|min:0.01|max:999999.99',
+            'form.tretirana_povrsina_ha'    => 'nullable|numeric|min:0|max:999999.99',
             'form.trgovacki_naziv_sredstva' => 'nullable|string|max:200',
             'form.kolicina_sredstva_l_ha'   => 'nullable|numeric|min:0.001|max:99999.999',
             'form.vrijeme_od'               => 'nullable|date_format:H:i',
@@ -295,7 +295,7 @@ class PrskanjeTable extends Component
         $this->validate([
             'editForm.kultura_id'               => 'required|integer',
             'editForm.datum_tretiranja'         => 'required|date',
-            'editForm.tretirana_povrsina_ha'    => 'nullable|numeric|min:0.01|max:999999.99',
+            'editForm.tretirana_povrsina_ha'    => 'nullable|numeric|min:0|max:999999.99',
             'editForm.trgovacki_naziv_sredstva' => 'required|string|max:200',
             'editForm.kolicina_sredstva_l_ha'   => 'required|numeric|min:0.001|max:99999.999',
             'editForm.vrijeme_od'               => 'nullable|date_format:H:i',
