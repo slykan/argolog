@@ -44,8 +44,8 @@
             <section>
                 <h2 class="text-lg font-semibold text-gray-800 mb-2">2. Voditelj obrade</h2>
                 <p>
-                    Voditelj obrade osobnih podataka je Denis Zvonарić, dostupan putem e-mail adrese:
-                    <a href="mailto:slynetwork@gmail.com" class="text-green-700 hover:underline font-medium">slynetwork@gmail.com</a>.
+                    Voditelj obrade osobnih podataka je Alan Fadljević, dostupan putem e-mail adrese:
+                    <a href="mailto:info@agro-log.app" class="text-green-700 hover:underline font-medium">info@agro-log.app</a>.
                 </p>
             </section>
 
@@ -105,7 +105,7 @@
                     <li><strong>Prigovora</strong> — prigovoriti obradi temeljnoj na legitimnom interesu.</li>
                 </ul>
                 <p class="mt-3">
-                    Zahtjeve možete poslati na: <a href="mailto:slynetwork@gmail.com" class="text-green-700 hover:underline font-medium">slynetwork@gmail.com</a>. Odgovorit ćemo u roku od 30 dana. Imate i pravo podnijeti pritužbu Agenciji za zaštitu osobnih podataka (AZOP).
+                    Zahtjeve možete poslati na: <a href="mailto:info@agro-log.app" class="text-green-700 hover:underline font-medium">info@agro-log.app</a>. Odgovorit ćemo u roku od 30 dana. Imate i pravo podnijeti pritužbu Agenciji za zaštitu osobnih podataka (AZOP).
                 </p>
             </section>
 
@@ -127,7 +127,7 @@
                 <h2 class="text-lg font-semibold text-gray-800 mb-2">11. Kontakt</h2>
                 <p>
                     Za sva pitanja vezana uz zaštitu osobnih podataka obratite se na:
-                    <a href="mailto:slynetwork@gmail.com" class="text-green-700 hover:underline font-medium">slynetwork@gmail.com</a>
+                    <a href="mailto:info@agro-log.app" class="text-green-700 hover:underline font-medium">info@agro-log.app</a>
                 </p>
             </section>
 
