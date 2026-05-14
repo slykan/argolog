@@ -1,5 +1,6 @@
 #!/bin/bash
 cd ~/agrolog
+git reset --hard origin/main
 git pull origin main
 npm run build
 cp -r ~/agrolog/public/build/. ~/public_html/build/
