@@ -48,55 +48,47 @@
 
                 {{-- Content --}}
                 <div class="relative z-10 w-full md:w-1/2 px-12 py-20">
+                    <div class="relative min-h-[320px]">
 
-                    {{-- Slide 1 --}}
-                    <div
-                        x-show="slide === 0"
-                        x-transition:enter="transition ease-out duration-500"
-                        x-transition:enter-start="opacity-0 translate-y-2"
-                        x-transition:enter-end="opacity-100 translate-y-0"
-                        x-transition:leave="transition ease-in duration-300"
-                        x-transition:leave-start="opacity-100"
-                        x-transition:leave-end="opacity-0"
-                    >
-                        <span class="inline-block text-xs font-semibold uppercase tracking-widest text-green-600 bg-green-100 px-3 py-1 rounded-full mb-4">Digitalna evidencija</span>
-                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-5">
-                            Agro zapisi<br>
-                            <span class="text-green-600">bez papira.</span>
-                        </h1>
-                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                            Vodite evidenciju gnojidbe i prskanja po ARKOD parcelama, filtrirajte zapise i ispišite ih u standardnom obliku — sve na jednom mjestu.
-                        </p>
-                        <div class="flex flex-wrap gap-3">
-                            <a href="{{ route('register') }}" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition shadow-sm">Isprobaj besplatno</a>
-                            <a href="{{ route('login') }}" class="bg-white hover:bg-gray-50 text-gray-700 font-semibold px-6 py-3 rounded-xl border border-gray-200 transition">Već imam račun</a>
+                        {{-- Slide 1 --}}
+                        <div
+                            class="absolute inset-0 transition-opacity duration-700"
+                            :class="slide === 0 ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'"
+                        >
+                            <span class="inline-block text-xs font-semibold uppercase tracking-widest text-green-600 bg-green-100 px-3 py-1 rounded-full mb-4">Digitalna evidencija</span>
+                            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-5">
+                                Agro zapisi<br>
+                                <span class="text-green-600">bez papira.</span>
+                            </h1>
+                            <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                                Vodite evidenciju gnojidbe i prskanja po ARKOD parcelama, filtrirajte zapise i ispišite ih u standardnom obliku — sve na jednom mjestu.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="{{ route('register') }}" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition shadow-sm">Isprobaj besplatno</a>
+                                <a href="{{ route('login') }}" class="bg-white hover:bg-gray-50 text-gray-700 font-semibold px-6 py-3 rounded-xl border border-gray-200 transition">Već imam račun</a>
+                            </div>
                         </div>
-                    </div>
 
-                    {{-- Slide 2 --}}
-                    <div
-                        x-show="slide === 1"
-                        x-transition:enter="transition ease-out duration-500"
-                        x-transition:enter-start="opacity-0 translate-y-2"
-                        x-transition:enter-end="opacity-100 translate-y-0"
-                        x-transition:leave="transition ease-in duration-300"
-                        x-transition:leave-start="opacity-100"
-                        x-transition:leave-end="opacity-0"
-                    >
-                        <span class="inline-block text-xs font-semibold uppercase tracking-widest text-green-600 bg-green-100 px-3 py-1 rounded-full mb-4">Ispis u sekundi</span>
-                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-5">
-                            Službeni obrazac<br>
-                            <span class="text-green-600">jednim klikom.</span>
-                        </h1>
-                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                            Generirajte PDF evidenciju gnojidbe i prskanja u skladu s AGRONET zahtjevima — uvijek ažurno, bez gubitka podataka.
-                        </p>
-                        <div class="flex flex-wrap gap-3">
-                            <a href="{{ route('register') }}" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition shadow-sm">Isprobaj besplatno</a>
-                            <a href="{{ route('login') }}" class="bg-white hover:bg-gray-50 text-gray-700 font-semibold px-6 py-3 rounded-xl border border-gray-200 transition">Već imam račun</a>
+                        {{-- Slide 2 --}}
+                        <div
+                            class="absolute inset-0 transition-opacity duration-700"
+                            :class="slide === 1 ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'"
+                        >
+                            <span class="inline-block text-xs font-semibold uppercase tracking-widest text-green-600 bg-green-100 px-3 py-1 rounded-full mb-4">Ispis u sekundi</span>
+                            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-5">
+                                Službeni obrazac<br>
+                                <span class="text-green-600">jednim klikom.</span>
+                            </h1>
+                            <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                                Generirajte PDF evidenciju gnojidbe i prskanja u skladu s AGRONET zahtjevima — uvijek ažurno, bez gubitka podataka.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="{{ route('register') }}" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition shadow-sm">Isprobaj besplatno</a>
+                                <a href="{{ route('login') }}" class="bg-white hover:bg-gray-50 text-gray-700 font-semibold px-6 py-3 rounded-xl border border-gray-200 transition">Već imam račun</a>
+                            </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
 
                 {{-- Dots --}}
