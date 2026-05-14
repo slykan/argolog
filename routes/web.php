@@ -19,6 +19,10 @@ Route::get('/kontakt', function () {
     return view('contact');
 })->name('contact');
 
+Route::get('/upute', function () {
+    return view('docs');
+})->name('docs');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

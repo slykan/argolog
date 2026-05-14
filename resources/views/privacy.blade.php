@@ -17,6 +17,7 @@
                 <x-application-logo style="width:180px; height:45px;" />
             </a>
             <nav class="flex items-center gap-3">
+                <a href="{{ route('docs') }}" class="text-sm font-medium text-gray-600 hover:text-green-700 transition">Upute</a>
                 <a href="{{ route('about') }}" class="text-sm font-medium text-gray-600 hover:text-green-700 transition">O nama</a>
                 <a href="{{ route('contact') }}" class="text-sm font-medium text-gray-600 hover:text-green-700 transition">Kontakt</a>
                 @auth
@@ -146,6 +147,7 @@
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
             <span class="text-gray-500">© {{ date('Y') }} AgroLog. Sva prava pridržana. Izradio <a href="https://on-click.hr" target="_blank" class="hover:text-white transition">@on-click.hr</a></span>
             <div class="flex gap-6">
+                <a href="{{ route('docs') }}" class="hover:text-white transition">Upute</a>
                 <a href="{{ route('about') }}" class="hover:text-white transition">O nama</a>
                 <a href="{{ route('contact') }}" class="hover:text-white transition">Kontakt</a>
                 <a href="{{ route('login') }}" class="hover:text-white transition">Prijava</a>
