@@ -30,26 +30,75 @@
     </header>
 
     {{-- HERO --}}
-    <section class="relative overflow-hidden bg-gradient-to-br from-green-50 via-white to-emerald-50 pt-20 pb-24">
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="inline-block text-xs font-semibold uppercase tracking-widest text-green-600 bg-green-100 px-3 py-1 rounded-full mb-4">Digitalna evidencija</span>
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-5">
-                    Agro zapisi<br>
-                    <span class="text-green-600">bez papira.</span>
-                </h1>
-                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                    Vodite evidenciju gnojidbe i prskanja po ARKOD parcelama, filtrirajte zapise i ispišite ih u standardnom obliku — sve na jednom mjestu.
-                </p>
-                <div class="flex flex-wrap gap-3">
-                    <a href="{{ route('register') }}" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition shadow-sm">
-                        Isprobaj besplatno
-                    </a>
-                    <a href="{{ route('login') }}" class="bg-white hover:bg-gray-50 text-gray-700 font-semibold px-6 py-3 rounded-xl border border-gray-200 transition">
-                        Već imam račun
-                    </a>
+    <section
+        x-data="{ slide: 0 }"
+        x-init="setInterval(() => { slide = (slide + 1) % 2 }, 5500)"
+        class="relative overflow-hidden pt-20 pb-24 min-h-[480px]"
+    >
+        {{-- Background images --}}
+        <div class="absolute inset-0 transition-opacity duration-1000" :class="slide === 0 ? 'opacity-100' : 'opacity-0'">
+            <img src="{{ asset('images/hero1.jpg') }}" class="w-full h-full object-cover" alt="">
+        </div>
+        <div class="absolute inset-0 transition-opacity duration-1000" :class="slide === 1 ? 'opacity-100' : 'opacity-0'">
+            <img src="{{ asset('images/hero2.jpg') }}" class="w-full h-full object-cover" alt="">
+        </div>
+        {{-- Overlay --}}
+        <div class="absolute inset-0 bg-white/50"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            {{-- Text area --}}
+            <div class="relative" style="min-height:280px;">
+                {{-- Slide 1 --}}
+                <div
+                    class="absolute inset-0"
+                    x-show="slide === 0"
+                    x-transition:enter="transition ease-out duration-500"
+                    x-transition:enter-start="opacity-0 translate-y-2"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    x-transition:leave="transition ease-in duration-300"
+                    x-transition:leave-start="opacity-100 translate-y-0"
+                    x-transition:leave-end="opacity-0 -translate-y-2"
+                >
+                    <span class="inline-block text-xs font-semibold uppercase tracking-widest text-green-600 bg-green-100 px-3 py-1 rounded-full mb-4">Digitalna evidencija</span>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-5">
+                        Agro zapisi<br>
+                        <span class="text-green-600">bez papira.</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Vodite evidenciju gnojidbe i prskanja po ARKOD parcelama, filtrirajte zapise i ispišite ih u standardnom obliku — sve na jednom mjestu.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="{{ route('register') }}" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition shadow-sm">Isprobaj besplatno</a>
+                        <a href="{{ route('login') }}" class="bg-white hover:bg-gray-50 text-gray-700 font-semibold px-6 py-3 rounded-xl border border-gray-200 transition">Već imam račun</a>
+                    </div>
+                </div>
+                {{-- Slide 2 --}}
+                <div
+                    class="absolute inset-0"
+                    x-show="slide === 1"
+                    x-transition:enter="transition ease-out duration-500"
+                    x-transition:enter-start="opacity-0 translate-y-2"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    x-transition:leave="transition ease-in duration-300"
+                    x-transition:leave-start="opacity-100 translate-y-0"
+                    x-transition:leave-end="opacity-0 -translate-y-2"
+                >
+                    <span class="inline-block text-xs font-semibold uppercase tracking-widest text-green-600 bg-green-100 px-3 py-1 rounded-full mb-4">Ispis u sekundi</span>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-5">
+                        Službeni obrazac<br>
+                        <span class="text-green-600">jednim klikom.</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Generirajte PDF evidenciju gnojidbe i prskanja u skladu s AGRONET zahtjevima — uvijek ažurno, bez gubitka podataka.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="{{ route('register') }}" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition shadow-sm">Isprobaj besplatno</a>
+                        <a href="{{ route('login') }}" class="bg-white hover:bg-gray-50 text-gray-700 font-semibold px-6 py-3 rounded-xl border border-gray-200 transition">Već imam račun</a>
+                    </div>
                 </div>
             </div>
+
+            {{-- Mock table (desna strana) --}}
             <div class="hidden md:block">
                 <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
                     <div class="bg-green-600 px-5 py-3 flex items-center gap-2">
@@ -81,6 +130,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        {{-- Dots --}}
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+            <button @click="slide = 0" class="w-2.5 h-2.5 rounded-full transition-colors duration-300" :class="slide === 0 ? 'bg-green-600' : 'bg-gray-300'"></button>
+            <button @click="slide = 1" class="w-2.5 h-2.5 rounded-full transition-colors duration-300" :class="slide === 1 ? 'bg-green-600' : 'bg-gray-300'"></button>
         </div>
     </section>
 
