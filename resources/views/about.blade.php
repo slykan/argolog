@@ -19,6 +19,7 @@
             </a>
             <nav class="flex items-center gap-3">
                 <a href="{{ route('about') }}" class="text-sm font-medium text-green-700 transition">O nama</a>
+                <a href="{{ route('contact') }}" class="text-sm font-medium text-gray-600 hover:text-green-700 transition">Kontakt</a>
                 @auth
                     <a href="{{ route('dashboard') }}" class="text-sm font-medium text-gray-600 hover:text-green-700 transition">Moj račun</a>
                 @else
@@ -142,6 +143,7 @@
             <span class="text-gray-500">© {{ date('Y') }} AgroLog. Sva prava pridržana. Izradio <a href="https://on-click.hr" target="_blank" class="hover:text-white transition">@on-click.hr</a></span>
             <div class="flex gap-6">
                 <a href="{{ route('about') }}" class="hover:text-white transition">O nama</a>
+                <a href="{{ route('contact') }}" class="hover:text-white transition">Kontakt</a>
                 <a href="{{ route('login') }}" class="hover:text-white transition">Prijava</a>
                 <a href="{{ route('register') }}" class="hover:text-white transition">Registracija</a>
                 <a href="{{ route('privacy') }}" class="hover:text-white transition">Politika privatnosti</a>

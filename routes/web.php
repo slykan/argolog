@@ -15,6 +15,10 @@ Route::get('/o-nama', function () {
     return view('about');
 })->name('about');
 
+Route::get('/kontakt', function () {
+    return view('contact');
+})->name('contact');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
