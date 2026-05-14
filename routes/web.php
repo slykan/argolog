@@ -11,6 +11,10 @@ Route::get('/politika-privatnosti', function () {
     return view('privacy');
 })->name('privacy');
 
+Route::get('/o-nama', function () {
+    return view('about');
+})->name('about');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
