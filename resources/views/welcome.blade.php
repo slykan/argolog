@@ -103,15 +103,20 @@
     </section>
 
     {{-- BESPLATNO STRIP --}}
-    <section class="bg-green-600 py-6">
-        <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left">
-            <div class="flex items-center gap-3">
-                <span class="bg-white text-green-700 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full whitespace-nowrap">Potpuno besplatno</span>
-                <span class="text-white font-semibold text-lg">Zašto?</span>
+    <section class="py-8 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="bg-green-600 rounded-2xl px-10 py-8 flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+                <div class="flex-shrink-0">
+                    <span class="bg-white text-green-700 text-sm font-bold uppercase tracking-widest px-5 py-2.5 rounded-xl whitespace-nowrap block">Potpuno besplatno</span>
+                </div>
+                <div class="w-px h-10 bg-green-500 hidden md:block flex-shrink-0"></div>
+                <div>
+                    <p class="text-white font-semibold text-lg mb-1">Zašto besplatno?</p>
+                    <p class="text-green-100 leading-relaxed text-sm">
+                        Vjerujemo da digitalni alati trebaju biti dostupni svim poljoprivrednicima — bez pretplate, bez skrivenih troškova. Naša misija je olakšati svakodnevni posao na gospodarstvu.
+                    </p>
+                </div>
             </div>
-            <p class="text-green-100 leading-relaxed">
-                Vjerujemo da digitalni alati trebaju biti dostupni svim poljoprivrednicima — bez pretplate, bez skrivenih troškova. Naša misija je olakšati svakodnevni posao na gospodarstvu.
-            </p>
         </div>
     </section>
 
