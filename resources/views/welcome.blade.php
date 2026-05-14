@@ -45,7 +45,7 @@
         {{-- Overlay --}}
         <div class="absolute inset-0 bg-white/50"></div>
 
-        <div class="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <div class="relative z-10 max-w-3xl mx-auto px-6">
             {{-- Text area --}}
             <div class="relative" style="min-height:280px;">
                 {{-- Slide 1 --}}
@@ -98,38 +98,6 @@
                 </div>
             </div>
 
-            {{-- Mock table (desna strana) --}}
-            <div class="hidden md:block">
-                <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-                    <div class="bg-green-600 px-5 py-3 flex items-center gap-2">
-                        <div class="w-3 h-3 rounded-full bg-white/40"></div>
-                        <div class="w-3 h-3 rounded-full bg-white/40"></div>
-                        <div class="w-3 h-3 rounded-full bg-white/40"></div>
-                        <span class="ml-2 text-white/80 text-xs font-mono">Gnojidba – {{ date('Y') }}</span>
-                    </div>
-                    <div class="p-5">
-                        <table class="w-full text-xs text-gray-700">
-                            <thead>
-                                <tr class="border-b border-gray-100">
-                                    <th class="text-left pb-2 font-semibold text-gray-500">ARKOD</th>
-                                    <th class="text-left pb-2 font-semibold text-gray-500">Kultura</th>
-                                    <th class="text-left pb-2 font-semibold text-gray-500">Gnojivo</th>
-                                    <th class="text-right pb-2 font-semibold text-gray-500">kg/ha</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-50">
-                                <tr><td class="py-2">1234567</td><td class="py-2">Pšenica</td><td class="py-2">NPK 15-15-15</td><td class="py-2 text-right font-mono">320</td></tr>
-                                <tr><td class="py-2">1234567</td><td class="py-2">Pšenica</td><td class="py-2">UREA 46%</td><td class="py-2 text-right font-mono">180</td></tr>
-                                <tr><td class="py-2">9876543</td><td class="py-2">Kukuruz</td><td class="py-2">NPK 7-20-30</td><td class="py-2 text-right font-mono">400</td></tr>
-                                <tr><td class="py-2">9876543</td><td class="py-2">Kukuruz</td><td class="py-2">KAN 27%</td><td class="py-2 text-right font-mono">210</td></tr>
-                            </tbody>
-                        </table>
-                        <div class="mt-4 flex justify-end">
-                            <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium">↓ Ispis PDF</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         {{-- Dots --}}
