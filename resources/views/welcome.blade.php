@@ -149,6 +149,40 @@
         </div>
     </section>
 
+    {{-- STATS --}}
+    @php
+        $statsKorisnici = \App\Models\User::count();
+        $zadnjiKorisnik = \App\Models\User::latest()->value('naziv_gospodarstva') ?: \App\Models\User::latest()->value('name');
+        $statsPrskanja  = \App\Models\Prskanje::count();
+        $statsGnojidbe  = \App\Models\Gnojidba::count();
+    @endphp
+    <section class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <span class="text-xs font-semibold uppercase tracking-widest text-green-600">Zajednica koja raste</span>
+                <h2 class="text-2xl font-bold text-gray-900 mt-2">Već koriste AgroLog</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100">
+                    <div class="text-3xl font-bold text-green-700 mb-1">{{ $statsKorisnici }}</div>
+                    <div class="text-xs text-gray-500 font-medium uppercase tracking-wide">Korisnika</div>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100 col-span-2 md:col-span-1">
+                    <div class="text-base font-bold text-green-700 mb-1 truncate" title="{{ $zadnjiKorisnik }}">{{ $zadnjiKorisnik }}</div>
+                    <div class="text-xs text-gray-500 font-medium uppercase tracking-wide">Zadnji korisnik</div>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100">
+                    <div class="text-3xl font-bold text-green-700 mb-1">{{ $statsPrskanja }}</div>
+                    <div class="text-xs text-gray-500 font-medium uppercase tracking-wide">Unosa prskanja</div>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100">
+                    <div class="text-3xl font-bold text-green-700 mb-1">{{ $statsGnojidbe }}</div>
+                    <div class="text-xs text-gray-500 font-medium uppercase tracking-wide">Unosa gnojidbe</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     {{-- CTA --}}
     <section class="py-20 bg-green-600">
         <div class="max-w-2xl mx-auto px-6 text-center">
