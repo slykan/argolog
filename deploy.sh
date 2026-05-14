@@ -3,6 +3,8 @@ cd ~/agrolog
 git pull origin main
 npm run build
 cp -r ~/agrolog/public/build/. ~/public_html/build/
+/opt/cpanel/ea-php83/root/usr/bin/php artisan cache:clear
+/opt/cpanel/ea-php83/root/usr/bin/php artisan view:clear
 /opt/cpanel/ea-php83/root/usr/bin/php artisan config:cache
 /opt/cpanel/ea-php83/root/usr/bin/php artisan route:cache
 /opt/cpanel/ea-php83/root/usr/bin/php artisan view:cache
