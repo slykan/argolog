@@ -45,7 +45,7 @@
         {{-- Overlay --}}
         <div class="absolute inset-0 bg-white/50"></div>
 
-        <div class="relative z-10 max-w-3xl mx-auto px-6">
+        <div class="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             {{-- Text area --}}
             <div class="relative" style="min-height:280px;">
                 {{-- Slide 1 --}}
