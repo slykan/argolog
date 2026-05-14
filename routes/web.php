@@ -23,6 +23,18 @@ Route::get('/upute', function () {
     return view('docs');
 })->name('docs');
 
+Route::get('/sitemap.xml', function () {
+    $urls = [
+        ['loc' => route('home'),    'priority' => '1.0', 'changefreq' => 'weekly'],
+        ['loc' => route('about'),   'priority' => '0.7', 'changefreq' => 'monthly'],
+        ['loc' => route('contact'), 'priority' => '0.6', 'changefreq' => 'monthly'],
+        ['loc' => route('docs'),    'priority' => '0.8', 'changefreq' => 'monthly'],
+        ['loc' => route('privacy'), 'priority' => '0.3', 'changefreq' => 'yearly'],
+    ];
+    return response()->view('sitemap', compact('urls'))
+        ->header('Content-Type', 'application/xml');
+})->name('sitemap');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

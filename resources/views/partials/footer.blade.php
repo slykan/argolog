@@ -1,3 +1,5 @@
+@include('partials.cookie-consent')
+
 <footer class="bg-gray-900 text-gray-400 py-8 mt-8">
     <div class="max-w-6xl mx-auto px-6 flex flex-col items-center gap-4 text-sm">
         <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">

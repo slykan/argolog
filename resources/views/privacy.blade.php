@@ -4,6 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Politika privatnosti – AgroLog</title>
+    <meta name="description" content="Politika privatnosti AgroLog aplikacije. Saznajte kako prikupljamo, koristimo i štitimo vaše osobne podatke.">
+    <link rel="canonical" href="{{ route('privacy') }}">
+    <link rel="icon" href="/favicon.ico">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ route('privacy') }}">
+    <meta property="og:title" content="Politika privatnosti – AgroLog">
+    <meta property="og:description" content="Politika privatnosti AgroLog aplikacije. Saznajte kako prikupljamo, koristimo i štitimo vaše osobne podatke.">
+    <meta property="og:locale" content="hr_HR">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])

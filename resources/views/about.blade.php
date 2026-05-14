@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>O nama – AgroLog</title>
     <meta name="description" content="AgroLog je digitalni alat za vođenje evidencije gnojidbe i prskanja za hrvatske poljoprivrednike. Razvijen s razumijevanjem stvarnih potreba na terenu.">
+    <link rel="canonical" href="{{ route('about') }}">
+    <link rel="icon" href="/favicon.ico">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ route('about') }}">
+    <meta property="og:title" content="O nama – AgroLog">
+    <meta property="og:description" content="AgroLog je digitalni alat za vođenje evidencije gnojidbe i prskanja za hrvatske poljoprivrednike. Razvijen s razumijevanjem stvarnih potreba na terenu.">
+    <meta property="og:locale" content="hr_HR">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])

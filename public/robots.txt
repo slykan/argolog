@@ -1,2 +1,8 @@
 User-agent: *
-Disallow:
+Disallow: /dashboard
+Disallow: /parcele
+Disallow: /gnojidba
+Disallow: /prskanje
+Disallow: /profile
+
+Sitemap: https://agro-log.app/sitemap.xml

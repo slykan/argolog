@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kontakt – AgroLog</title>
     <meta name="description" content="Kontaktirajte nas za pitanja, prijedloge ili tehničku podršku vezanu uz AgroLog aplikaciju.">
+    <link rel="canonical" href="{{ route('contact') }}">
+    <link rel="icon" href="/favicon.ico">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ route('contact') }}">
+    <meta property="og:title" content="Kontakt – AgroLog">
+    <meta property="og:description" content="Kontaktirajte nas za pitanja, prijedloge ili tehničku podršku vezanu uz AgroLog aplikaciju.">
+    <meta property="og:locale" content="hr_HR">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
