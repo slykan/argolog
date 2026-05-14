@@ -163,20 +163,20 @@
                 <h2 class="text-2xl font-bold text-gray-900 mt-2">Već koriste AgroLog</h2>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100">
-                    <div class="text-3xl font-bold text-green-700 mb-1">{{ $statsKorisnici }}</div>
+                <div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100 flex flex-col items-center justify-center">
+                    <div class="text-3xl font-bold text-green-700 mb-1">{{ $statsKorisnici }}+</div>
                     <div class="text-xs text-gray-500 font-medium uppercase tracking-wide">Korisnika</div>
                 </div>
-                <div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100 col-span-2 md:col-span-1">
-                    <div class="text-base font-bold text-green-700 mb-1 truncate" title="{{ $zadnjiKorisnik }}">{{ $zadnjiKorisnik }}</div>
+                <div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100 flex flex-col items-center justify-center">
+                    <div class="text-xs font-bold text-green-700 mb-1 leading-snug">{{ $zadnjiKorisnik }}</div>
                     <div class="text-xs text-gray-500 font-medium uppercase tracking-wide">Zadnji korisnik</div>
                 </div>
-                <div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100">
-                    <div class="text-3xl font-bold text-green-700 mb-1">{{ $statsPrskanja }}</div>
+                <div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100 flex flex-col items-center justify-center">
+                    <div class="text-3xl font-bold text-green-700 mb-1">{{ $statsPrskanja }}+</div>
                     <div class="text-xs text-gray-500 font-medium uppercase tracking-wide">Unosa prskanja</div>
                 </div>
-                <div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100">
-                    <div class="text-3xl font-bold text-green-700 mb-1">{{ $statsGnojidbe }}</div>
+                <div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100 flex flex-col items-center justify-center">
+                    <div class="text-3xl font-bold text-green-700 mb-1">{{ $statsGnojidbe }}+</div>
                     <div class="text-xs text-gray-500 font-medium uppercase tracking-wide">Unosa gnojidbe</div>
                 </div>
             </div>
