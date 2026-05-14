@@ -45,7 +45,7 @@
         {{-- Overlay --}}
         <div class="absolute inset-0 bg-white/50"></div>
 
-        <div class="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <div class="relative z-10 max-w-2xl mx-auto px-6 text-center mb-14">
             {{-- Text area --}}
             <div class="relative" style="min-height:280px;">
                 {{-- Slide 1 --}}
@@ -67,7 +67,7 @@
                     <p class="text-lg text-gray-600 mb-8 leading-relaxed">
                         Vodite evidenciju gnojidbe i prskanja po ARKOD parcelama, filtrirajte zapise i ispišite ih u standardnom obliku — sve na jednom mjestu.
                     </p>
-                    <div class="flex flex-wrap gap-3">
+                    <div class="flex flex-wrap justify-center gap-3">
                         <a href="{{ route('register') }}" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition shadow-sm">Isprobaj besplatno</a>
                         <a href="{{ route('login') }}" class="bg-white hover:bg-gray-50 text-gray-700 font-semibold px-6 py-3 rounded-xl border border-gray-200 transition">Već imam račun</a>
                     </div>
@@ -91,13 +91,12 @@
                     <p class="text-lg text-gray-600 mb-8 leading-relaxed">
                         Generirajte PDF evidenciju gnojidbe i prskanja u skladu s AGRONET zahtjevima — uvijek ažurno, bez gubitka podataka.
                     </p>
-                    <div class="flex flex-wrap gap-3">
+                    <div class="flex flex-wrap justify-center gap-3">
                         <a href="{{ route('register') }}" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition shadow-sm">Isprobaj besplatno</a>
                         <a href="{{ route('login') }}" class="bg-white hover:bg-gray-50 text-gray-700 font-semibold px-6 py-3 rounded-xl border border-gray-200 transition">Već imam račun</a>
                     </div>
                 </div>
             </div>
-
         </div>
 
         {{-- Dots --}}
