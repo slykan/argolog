@@ -35,7 +35,7 @@
             <div
                 x-data="{ slide: 0 }"
                 x-init="setInterval(() => { slide = (slide + 1) % 2 }, 5500)"
-                class="relative overflow-hidden rounded-2xl min-h-[420px] flex items-center"
+                class="relative overflow-hidden rounded-2xl min-h-[520px] flex items-center"
             >
                 {{-- Background images --}}
                 <div class="absolute inset-0 transition-opacity duration-1000" :class="slide === 0 ? 'opacity-100' : 'opacity-0'">
