@@ -12,24 +12,7 @@
 <body class="font-sans antialiased text-gray-800 bg-white">
 
     {{-- NAV --}}
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="/" class="flex items-center">
-                <x-application-logo style="width:180px; height:45px;" />
-            </a>
-            <nav class="flex items-center gap-3">
-                <a href="{{ route('docs') }}" class="text-sm font-medium text-gray-600 hover:text-green-700 transition">Upute</a>
-                <a href="{{ route('about') }}" class="text-sm font-medium text-green-700 transition">O nama</a>
-                <a href="{{ route('contact') }}" class="text-sm font-medium text-gray-600 hover:text-green-700 transition">Kontakt</a>
-                @auth
-                    <a href="{{ route('dashboard') }}" class="text-sm font-medium text-gray-600 hover:text-green-700 transition">Moj račun</a>
-                @else
-                    <a href="{{ route('login') }}" class="text-sm font-medium text-gray-600 hover:text-green-700 transition">Prijava</a>
-                    <a href="{{ route('register') }}" class="text-sm font-semibold bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition">Registracija</a>
-                @endauth
-            </nav>
-        </div>
-    </header>
+    @include('partials.nav', ['active' => 'about'])
 
     {{-- HERO --}}
     <section class="bg-gradient-to-br from-green-50 via-white to-emerald-50 py-20">
