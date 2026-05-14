@@ -224,6 +224,7 @@
             <div class="flex gap-6">
                 <a href="{{ route('login') }}" class="hover:text-white transition">Prijava</a>
                 <a href="{{ route('register') }}" class="hover:text-white transition">Registracija</a>
+                <a href="{{ route('privacy') }}" class="hover:text-white transition">Politika privatnosti</a>
             </div>
         </div>
     </footer>
